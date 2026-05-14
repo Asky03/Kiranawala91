@@ -1,0 +1,199 @@
+// This is your Prisma schema file.
+// Learn more: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============ ENUMS ============
+
+enum Role {
+  CUSTOMER
+  SHOPKEEPER
+  ADMIN
+}
+
+enum ShopStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  SUSPENDED
+}
+
+enum OrderStatus {
+  PENDING
+  ACCEPTED
+  PACKED
+  OUT_FOR_DELIVERY
+  COMPLETED
+  CANCELLED
+  REJECTED
+}
+
+enum DeliveryMode {
+  PICKUP
+  DELIVERY
+}
+
+// ============ MODELS ============
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  phone       String?  @unique
+  password    String
+  name        String
+  role        Role     @default(CUSTOMER)
+
+  addressLine String?
+  city        String?
+  pincode     String?
+
+  shop        Shop?
+  orders      Order[]
+  reviews     Review[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([email])
+  @@index([role])
+}
+
+model Shop {
+  id            String     @id @default(cuid())
+  ownerId       String     @unique
+  owner         User       @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  name          String
+  description   String?
+  phone         String
+
+  addressLine   String
+  city          String
+  pincode       String
+  latitude      Float?
+  longitude     Float?
+
+  status        ShopStatus @default(PENDING)
+  isOpen        Boolean    @default(true)
+  deliveryAvailable Boolean @default(true)
+  pickupAvailable   Boolean @default(true)
+  deliveryRadius    Float?
+  minOrderAmount    Decimal @default(0) @db.Decimal(10, 2)
+
+  products      Product[]
+  orders        Order[]
+  reviews       Review[]
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  approvedAt    DateTime?
+
+  @@index([status])
+  @@index([pincode])
+  @@index([city])
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  shopId      String
+  shop        Shop     @relation(fields: [shopId], references: [id], onDelete: Cascade)
+
+  name        String
+  description String?
+  category    String
+  unit        String
+
+  price       Decimal  @db.Decimal(10, 2)
+  mrp         Decimal  @db.Decimal(10, 2)
+  stock       Int      @default(0)
+  lowStockThreshold Int @default(5)
+
+  imageUrl    String?
+  isActive    Boolean  @default(true)
+
+  orderItems  OrderItem[]
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([shopId])
+  @@index([category])
+  @@index([name])
+}
+
+model Order {
+  id            String       @id @default(cuid())
+  orderNumber   String       @unique
+
+  customerId    String
+  customer      User         @relation(fields: [customerId], references: [id])
+
+  shopId        String
+  shop          Shop         @relation(fields: [shopId], references: [id])
+
+  items         OrderItem[]
+
+  subtotal      Decimal      @db.Decimal(10, 2)
+  deliveryFee   Decimal      @default(0) @db.Decimal(10, 2)
+  totalAmount   Decimal      @db.Decimal(10, 2)
+
+  deliveryMode  DeliveryMode
+  deliveryAddress String?
+  customerNote  String?
+
+  status        OrderStatus  @default(PENDING)
+
+  placedAt      DateTime     @default(now())
+  acceptedAt    DateTime?
+  packedAt      DateTime?
+  completedAt   DateTime?
+  cancelledAt   DateTime?
+  cancellationReason String?
+
+  updatedAt     DateTime     @updatedAt
+
+  @@index([customerId])
+  @@index([shopId])
+  @@index([status])
+  @@index([orderNumber])
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  orderId     String
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id])
+
+  productName String
+  unit        String
+  pricePerUnit Decimal @db.Decimal(10, 2)
+  quantity    Int
+  subtotal    Decimal  @db.Decimal(10, 2)
+
+  @@index([orderId])
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  customerId String
+  customer   User     @relation(fields: [customerId], references: [id])
+  shopId     String
+  shop       Shop     @relation(fields: [shopId], references: [id], onDelete: Cascade)
+
+  rating     Int
+  comment    String?
+
+  createdAt  DateTime @default(now())
+
+  @@unique([customerId, shopId])
+  @@index([shopId])
+}
