@@ -61,6 +61,13 @@ Customer / Shopkeeper / Admin
 - pnpm v9+
 - PostgreSQL 16+
 - Git
+- VS Code
+- Docker
+- Docker Compose
+
+
+
+---
 
 ## 🛠️ Quick Start
 
