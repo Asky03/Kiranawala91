@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { AuthBootstrap } from '@/components/AuthBootstrap';
 import { Inter, Fraunces, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
@@ -44,3 +45,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
