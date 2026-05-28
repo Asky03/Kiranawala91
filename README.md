@@ -64,6 +64,7 @@ Customer / Shopkeeper / Admin
 - VS Code
 - Docker
 - Docker Compose
+- Docker Hub
 
 
 
