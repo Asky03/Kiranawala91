@@ -1,48 +1,25 @@
-import type { Metadata } from 'next';
-import { AuthBootstrap } from '@/components/AuthBootstrap';
-import { Inter, Fraunces, JetBrains_Mono } from 'next/font/google';
-import './globals.css';
+'use client';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
+import { useEffect } from 'react';
+import { useAuthStore } from '@/store/auth.store';
 
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-fraunces',
-  display: 'swap',
-  axes: ['opsz', 'SOFT'],
-});
+/**
+ * Mount this once at the root layout (inside <body>).
+ * Verifies the httpOnly cookie is still valid by calling /api/auth/me
+ * and updates the auth store with the fresh user object.
+ *
+ * Why this is needed:
+ *   - localStorage cached the user object for instant UI render
+ *   - But that cache could be stale (role changed, account deleted)
+ *   - This bootstrap call confirms the cookie is valid and refreshes data
+ *   - If the cookie is gone, user is set to null and UI updates accordingly
+ */
+export function AuthBootstrap() {
+  const bootstrap = useAuthStore((s) => s.bootstrap);
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-jetbrains-mono',
-  display: 'swap',
-});
+  useEffect(() => {
+    bootstrap();
+  }, [bootstrap]);
 
-export const metadata: Metadata = {
-  title: 'Kiranawala — Your neighbourhood, delivered.',
-  description:
-    'A cloud-based platform connecting local Kirana stores with nearby customers. Zero commission. Direct support.',
-  keywords: ['kirana', 'local commerce', 'india', 'grocery', 'quick commerce'],
-  authors: [{ name: 'Kiranawala' }],
-  openGraph: {
-    title: 'Kiranawala — Your neighbourhood, delivered.',
-    description: 'Direct from your local Kirana shop. Zero middleman.',
-    type: 'website',
-  },
-};
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
-    >
-      <body>{children}</body>
-    </html>
-  );
+  return null;
 }
-
