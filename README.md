@@ -90,6 +90,8 @@ pnpm --filter backend prisma:migrate
 # Run dev servers (separate terminals)
 pnpm dev:backend   # → http://localhost:4000
 pnpm dev:frontend  # → http://localhost:3000
+pnpm dev:docs      # → http://localhost:3001
+pnpm dev:github    # → http://localhost:3002
 ```
 
 ## 📁 Project Structure
