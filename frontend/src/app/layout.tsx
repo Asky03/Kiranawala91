@@ -1,25 +1,25 @@
-'use client';
-
-import { useEffect } from 'react';
-import { useAuthStore } from '@/store/auth.store';
+import type { Metadata } from 'next';
+import './globals.css';
 
 /**
- * Mount this once at the root layout (inside <body>).
- * Verifies the httpOnly cookie is still valid by calling /api/auth/me
- * and updates the auth store with the fresh user object.
- *
- * Why this is needed:
- *   - localStorage cached the user object for instant UI render
- *   - But that cache could be stale (role changed, account deleted)
- *   - This bootstrap call confirms the cookie is valid and refreshes data
- *   - If the cookie is gone, user is set to null and UI updates accordingly
+ * Root layout — minimal, no external component dependencies.
+ * Once everything else works, you can add <AuthBootstrap /> back inside <body>.
+ * For now, simpler = fewer crash surfaces.
  */
-export function AuthBootstrap() {
-  const bootstrap = useAuthStore((s) => s.bootstrap);
+export const metadata: Metadata = {
+  title: 'Kiranawala',
+  description:
+    'A cloud-based platform connecting local Kirana stores with nearby customers.',
+};
 
-  useEffect(() => {
-    bootstrap();
-  }, [bootstrap]);
-
-  return null;
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className="antialiased">{children}</body>
+    </html>
+  );
 }
