@@ -1,49 +1,57 @@
-import { apiFetch } from '@/lib/api';
-import { cn } from '@/lib/utils';
-import { CheckCircle2, XCircle, Activity } from 'lucide-react';
+'use client';
 
-type HealthData = {
+import { useEffect, useState } from 'react';
+import { api } from '@/lib/api';
+
+interface HealthData {
   status: string;
-  timestamp: string;
-  service: string;
-  version: string;
-  database: string;
-  uptime: number;
-};
+  database?: string;
+  uptime?: number;
+  timestamp?: string;
+}
 
-export async function HealthStatus() {
-  const result = await apiFetch<HealthData>('/api/health');
+// Defining the state shape as a named type — keeps useState<HealthState>
+// on a single line so the generic angle brackets can't get mangled by paste.
+type HealthState =
+  | { kind: 'loading' }
+  | { kind: 'ok'; data: HealthData }
+  | { kind: 'error'; message: string };
 
-  const isHealthy = result.success && result.data.status === 'ok';
+export function HealthStatus() {
+  const [state, setState] = useState<HealthState>({ kind: 'loading' });
+
+  useEffect(() => {
+    api.get<HealthData>('/api/health').then((result) => {
+      if (result.success) {
+        setState({ kind: 'ok', data: result.data });
+      } else {
+        setState({ kind: 'error', message: result.error.message });
+      }
+    });
+  }, []);
+
+  if (state.kind === 'loading') {
+    return (
+      <div className="flex items-center gap-2 text-sm text-stone-500">
+        <span className="h-2 w-2 animate-pulse rounded-full bg-stone-400" />
+        Checking backend…
+      </div>
+    );
+  }
+
+  if (state.kind === 'error') {
+    return (
+      <div className="flex items-center gap-2 text-sm text-red-600">
+        <span className="h-2 w-2 rounded-full bg-red-500" />
+        Backend offline: {state.message}
+      </div>
+    );
+  }
 
   return (
-    <div
-      className={cn(
-        'inline-flex items-center gap-3 rounded-full px-4 py-2 border',
-        isHealthy
-          ? 'bg-forest-50 border-forest-200 text-forest-700'
-          : 'bg-red-50 border-red-200 text-red-700',
-      )}
-    >
-      {isHealthy ? (
-        <>
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-forest-400 opacity-75" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-forest-500" />
-          </span>
-          <span className="text-sm font-medium">
-            API live · DB connected · v{result.data.version}
-          </span>
-        </>
-      ) : (
-        <>
-          <XCircle className="h-4 w-4" />
-          <span className="text-sm font-medium">
-            API offline
-            {!result.success && ` — ${result.error.message}`}
-          </span>
-        </>
-      )}
+    <div className="flex items-center gap-2 text-sm text-forest-700">
+      <span className="h-2 w-2 rounded-full bg-forest-500" />
+      Backend connected — DB {state.data.database ?? 'ok'}
     </div>
   );
 }
