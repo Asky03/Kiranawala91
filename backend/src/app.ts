@@ -11,6 +11,7 @@ import { errorHandler, notFoundHandler } from './middleware/error.middleware';
 
 import healthRoutes from './modules/health/health.routes';
 import authRoutes from './modules/auth/auth.routes';
+import shopRoutes from './modules/shop/shop.routes';
 
 export const createApp = (): Express => {
   const app = express();
@@ -28,7 +29,7 @@ export const createApp = (): Express => {
   app.use(express.json({ limit: '1mb' }));
   app.use(express.urlencoded({ extended: true, limit: '1mb' }));
 
-  // ─── Cookies (Day 2 — needed for httpOnly JWT cookie) ──
+  // ─── Cookies ────────────────────────────────────────────
   app.use(cookieParser());
 
   // ─── Request logging ────────────────────────────────────
@@ -43,8 +44,8 @@ export const createApp = (): Express => {
   app.use(
     '/api',
     rateLimit({
-      windowMs: 15 * 60 * 1000, // 15 min
-      max: 300, // 300 requests per IP per window
+      windowMs: 15 * 60 * 1000,
+      max: 300,
       standardHeaders: 'draft-7',
       legacyHeaders: false,
     }),
@@ -53,12 +54,13 @@ export const createApp = (): Express => {
   // ─── Routes ─────────────────────────────────────────────
   app.use('/api/health', healthRoutes);
   app.use('/api/auth', authRoutes);
+  app.use('/api/shops', shopRoutes);
 
   // Root
   app.get('/', (_req, res) => {
     res.json({
       service: 'kiranawala-api',
-      version: '0.2.0',
+      version: '0.3.0',
       docs: '/api/health',
     });
   });
