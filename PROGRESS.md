@@ -45,3 +45,4 @@
 - Created `kiranawala_dev` database with dedicated user
 - Configured VS Code (extensions, format-on-save, design font)
 - Created public GitHub repo with topics
+- Created private repo as of myself 
