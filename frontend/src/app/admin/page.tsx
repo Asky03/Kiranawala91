@@ -1,30 +1,31 @@
-/* ══════════════════════════════════════════════════════════════════════
- *  📁  DESTINATION:
- *      frontend/src/app/admin/page.tsx
- *
- *  🆕 CREATE NEW    →    URL: /admin
- *
- *  📝  Admin dashboard home — DARK console (says "Admin console", shows stat cards)
- *
- *  👉  Copy this entire file (including this header) to the destination above.
- *      You can delete this comment block after pasting — it's just a marker.
- * ══════════════════════════════════════════════════════════════════════ */
-
 'use client';
 
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { shopApi } from '@/lib/shop';
 import { useAuthStore } from '@/store/auth.store';
 import { Button } from '@/components/ui/Button';
-import { useRouter } from 'next/navigation';
+import { Logo } from '@/components/Logo';
 
 /**
- * Admin home page at /admin.
- * Protected by middleware.ts (ADMIN role only).
- * The /admin/login page is the public exception inside this prefix.
+ * Admin home — shows quick stats and links to admin tools.
+ * Day 3: pending shop approvals + shortcut to the queue.
  */
 export default function AdminHomePage() {
   const router = useRouter();
   const user = useAuthStore((s) => s.user);
   const logout = useAuthStore((s) => s.logout);
+
+  const [pendingCount, setPendingCount] = useState<number | null>(null);
+
+  useEffect(() => {
+    shopApi.listPending().then((result) => {
+      if (result.success) {
+        setPendingCount(result.data.count);
+      }
+    });
+  }, []);
 
   const handleLogout = async () => {
     await logout();
@@ -35,9 +36,10 @@ export default function AdminHomePage() {
     <div className="min-h-screen bg-stone-950 text-stone-100">
       <header className="border-b border-stone-800 bg-stone-900">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <h1 className="font-display text-xl font-semibold">
-            Kiranawala <span className="text-stone-500">/ admin</span>
-          </h1>
+          <div className="flex items-center gap-2">
+            <Logo size="md" variant="light" />
+            <span className="text-stone-500">/ admin</span>
+          </div>
           <div className="flex items-center gap-4">
             <span className="text-sm text-stone-400">{user?.email}</span>
             <Button
@@ -53,27 +55,43 @@ export default function AdminHomePage() {
       </header>
 
       <main className="mx-auto max-w-6xl px-6 py-10">
-        <h2 className="font-display text-2xl font-semibold">Admin console</h2>
-        <p className="mt-2 text-stone-400">
-          Shop approvals, user management, and platform health will live here.
+        <h1 className="font-display text-2xl font-semibold">Admin console</h1>
+        <p className="mt-1 text-sm text-stone-400">
+          Approvals, user management, and platform health.
         </p>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            { label: 'Pending shop approvals', value: '—' },
-            { label: 'Total users', value: '—' },
-            { label: 'Orders today', value: '—' },
-          ].map((card) => (
-            <div
-              key={card.label}
-              className="rounded-xl border border-stone-800 bg-stone-900 p-5"
-            >
-              <div className="text-xs uppercase tracking-wider text-stone-500">
-                {card.label}
-              </div>
-              <div className="mt-2 font-mono text-3xl font-semibold">{card.value}</div>
+          {/* Pending shop approvals — clickable */}
+          <Link
+            href="/admin/shops"
+            className="group rounded-xl border border-stone-800 bg-stone-900 p-5 transition hover:border-saffron-700 hover:bg-stone-900/50"
+          >
+            <div className="text-xs uppercase tracking-wider text-stone-500">
+              Pending shop approvals
             </div>
-          ))}
+            <div className="mt-2 font-mono text-3xl font-semibold">
+              {pendingCount ?? '—'}
+            </div>
+            <div className="mt-2 text-xs text-saffron-400 group-hover:text-saffron-300">
+              Review queue →
+            </div>
+          </Link>
+
+          <div className="rounded-xl border border-stone-800 bg-stone-900 p-5">
+            <div className="text-xs uppercase tracking-wider text-stone-500">
+              Total users
+            </div>
+            <div className="mt-2 font-mono text-3xl font-semibold">—</div>
+            <div className="mt-2 text-xs text-stone-600">Coming in Day 7</div>
+          </div>
+
+          <div className="rounded-xl border border-stone-800 bg-stone-900 p-5">
+            <div className="text-xs uppercase tracking-wider text-stone-500">
+              Orders today
+            </div>
+            <div className="mt-2 font-mono text-3xl font-semibold">—</div>
+            <div className="mt-2 text-xs text-stone-600">Coming in Day 6</div>
+          </div>
         </div>
       </main>
     </div>
