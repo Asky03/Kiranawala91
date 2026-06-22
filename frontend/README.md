@@ -49,4 +49,3 @@ src/
 | ------------- | ---------------------------------- |
 | `pnpm dev`    | Next.js dev server (port 3000)     |
 | `pnpm build`  | Production build                   |
-| `pnpm start`  | Run production build               |
