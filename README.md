@@ -63,7 +63,6 @@ Customer / Shopkeeper / Admin
 - Git
 - VS Code
 - Docker
-- Docker Compose
 
 
 
