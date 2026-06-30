@@ -49,3 +49,17 @@ src/
 | ------------- | ---------------------------------- |
 | `pnpm dev`    | Next.js dev server (port 3000)     |
 | `pnpm build`  | Production build                   |
+| `pnpm test`   | testing                            |
+| `pnpm lint`   | linting                            |
+
+## API Response Shape
+
+**Success:**
+
+```json
+{
+  "success": true,
+  "data": { ... },
+  "message": "Optional message"
+}   
+
