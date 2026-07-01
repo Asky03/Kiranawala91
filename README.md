@@ -62,7 +62,6 @@ Customer / Shopkeeper / Admin
 - PostgreSQL 16+
 - Git
 - VS Code
-- Docker
 
 
 
