@@ -48,7 +48,6 @@ src/
 | Command       | Purpose                            |
 | ------------- | ---------------------------------- |
 | `pnpm dev`    | Next.js dev server (port 3000)     |
-| `pnpm build`  | Production build                   |
 
 
 ## API Response Shape
