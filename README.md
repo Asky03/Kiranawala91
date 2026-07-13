@@ -100,6 +100,3 @@ kiranawala/
 └── .github/      # CI/CD workflows
 ```
 
-## 📜 License
-
-MIT — see [LICENSE](./LICENSE)
