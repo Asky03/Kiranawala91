@@ -266,7 +266,6 @@ Documented in [docs/](./docs/) as this grows. Highlights so far:
 - **Edge middleware for UX, not security** — Next.js `middleware.ts` gives instant redirects for wrong-role access. Real permission enforcement is on the backend.
 - **State machine over booleans** — Shop approval uses `PENDING → APPROVED/REJECTED → PENDING` (via edit) rather than an `isApproved: boolean`. Extensible to SUSPENDED, DEACTIVATED, etc. without migrations.
 - **CUID over UUID** — opaque, sortable, URL-safe.
-- **Decimal for money** (planned Day 6) — never `Float`.
 
 ---
 
