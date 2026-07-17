@@ -264,7 +264,7 @@ Documented in [docs/](./docs/) as this grows. Highlights so far:
 - **`/me` endpoint pattern** — user identity comes from JWT, never from URL params. Right pattern for any self-scoped resource.
 - **httpOnly cookie + Bearer header dual auth** — browsers use secure cookies; Postman/curl use `Authorization` header. Same JWT.
 - **Edge middleware for UX, not security** — Next.js `middleware.ts` gives instant redirects for wrong-role access. Real permission enforcement is on the backend.
-- **State machine over booleans** — Shop approval uses `PENDING → APPROVED/REJECTED → PENDING` (via edit) rather than an `isApproved: boolean`. Extensible to SUSPENDED, DEACTIVATED, etc. without migrations.
+- **State machine over booleans** — Shop approval uses `PENDING → APPROVED/REJECTED 
 
 ---
 
