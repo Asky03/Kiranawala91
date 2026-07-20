@@ -263,6 +263,11 @@ Documented in [docs/](./docs/) as this grows. Highlights so far:
 - **Feature-based backend modules** (`modules/auth`, `modules/shop`) — each feature owns its schema, service, controller, and routes. Scales with codebase.
 - **`/me` endpoint pattern** — user identity comes from JWT, never from URL params. Right pattern for any self-scoped resource.
 - **httpOnly cookie + Bearer header dual auth** — browsers use secure cookies; Postman/curl use `Authorization` header. Same JWT.
+- **Edge middleware for UX, not security** — Next.js `middleware.ts` gives instant redirects for wrong-role access. Real permission enforcement is on the backend.
+- **State machine over booleans** — Shop approval uses `PENDING → APPROVED/REJECTED → PENDING` (via edit) rather than an `isApproved: boolean`. Extensible to SUSPENDED, DEACTIVATED, etc. without migrations.
+- **CUID over UUID** — opaque, sortable, URL-safe.
+- **Decimal for money** (planned Day 6) — never `Float`.
+- **Zod as validation contract** — Zod schemas are the single source of truth between frontend and backend. Type inference eliminates drift.
 
 ---
 
