@@ -268,7 +268,6 @@ Documented in [docs/](./docs/) as this grows. Highlights so far:
 - **CUID over UUID** — opaque, sortable, URL-safe.
 - **Decimal for money** (planned Day 6) — never `Float`.
 
-
 ---
 
 ## 📜 License
