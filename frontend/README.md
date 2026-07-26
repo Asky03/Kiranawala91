@@ -260,9 +260,6 @@ kiranawala/
 
 Documented in [docs/](./docs/) as this grows. Highlights so far:
 
-- **Feature-based backend modules** (`modules/auth`, `modules/shop`) — each feature owns its schema, service, controller, and routes. Scales with codebase.
-- **`/me` endpoint pattern** — user identity comes from JWT, never from URL params. Right pattern for any self-scoped resource.
-
 ---
 
 ## 📜 License
