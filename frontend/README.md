@@ -254,8 +254,6 @@ kiranawala/
 | 11 | Deployment (Vercel + Render + Neon) | ⏳ Planned |
 | 12 | Documentation + open-source release | ⏳ Planned |
 
---
-
 ## 📜 License
 
 MIT — see [LICENSE](./LICENSE)
