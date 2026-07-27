@@ -254,13 +254,7 @@ kiranawala/
 | 11 | Deployment (Vercel + Render + Neon) | ⏳ Planned |
 | 12 | Documentation + open-source release | ⏳ Planned |
 
----
-
-## 🧠 Design Decisions
-
-Documented in [docs/](./docs/) as this grows. Highlights so far:
-
----
+--
 
 ## 📜 License
 
