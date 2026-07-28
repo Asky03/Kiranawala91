@@ -38,7 +38,6 @@ _A zero-commission alternative to high-commission quick-commerce._
 - ⏳ Day 4: Product & inventory management
 - ⏳ Day 4.5: UI polish pass
 - ⏳ Day 5: Customer shop discovery
-- ⏳ Day 6+: Orders, checkout, reviews, deployment
 
 ---
 
@@ -157,8 +156,6 @@ Seeded by `prisma/seed.ts`. **Never use in production.**
 | Customer | `customer@kiranawala.local` | `Customer@12345` | `/login` |
 | Shopkeeper | `shopkeeper@kiranawala.local` | `Shop@12345` | `/login` |
 | Admin | `admin@kiranawala.local` | `Admin@12345` | `/admin/login` |
-
----
 
 ## 📡 API Reference
 
