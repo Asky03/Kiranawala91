@@ -37,7 +37,6 @@ _A zero-commission alternative to high-commission quick-commerce._
 **What's coming:**
 - ⏳ Day 4: Product & inventory management
 - ⏳ Day 4.5: UI polish pass
-- ⏳ Day 5: Customer shop discovery
 
 ---
 
