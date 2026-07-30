@@ -36,7 +36,6 @@ _A zero-commission alternative to high-commission quick-commerce._
 
 **What's coming:**
 - ⏳ Day 4: Product & inventory management
-
 ---
 
 ## 💡 The Problem
