@@ -36,6 +36,10 @@ _A zero-commission alternative to high-commission quick-commerce._
 
 **What's coming:**
 - ⏳ Day 4: Product & inventory management
+- ⏳ Day 4.5: UI polish pass
+- ⏳ Day 5: Customer shop discovery
+- ⏳ Day 6+: Orders, checkout, reviews, deployment
+
 ---
 
 ## 💡 The Problem
@@ -154,6 +158,8 @@ Seeded by `prisma/seed.ts`. **Never use in production.**
 | Shopkeeper | `shopkeeper@kiranawala.local` | `Shop@12345` | `/login` |
 | Admin | `admin@kiranawala.local` | `Admin@12345` | `/admin/login` |
 
+---
+
 ## 📡 API Reference
 
 Base URL: `http://localhost:4000`
@@ -247,6 +253,23 @@ kiranawala/
 | 10 | Docker Compose + CI/CD | ⏳ Planned |
 | 11 | Deployment (Vercel + Render + Neon) | ⏳ Planned |
 | 12 | Documentation + open-source release | ⏳ Planned |
+
+---
+
+## 🧠 Design Decisions
+
+Documented in [docs/](./docs/) as this grows. Highlights so far:
+
+- **Feature-based backend modules** (`modules/auth`, `modules/shop`) — each feature owns its schema, service, controller, and routes. Scales with codebase.
+- **`/me` endpoint pattern** — user identity comes from JWT, never from URL params. Right pattern for any self-scoped resource.
+- **httpOnly cookie + Bearer header dual auth** — browsers use secure cookies; Postman/curl use `Authorization` header. Same JWT.
+- **Edge middleware for UX, not security** — Next.js `middleware.ts` gives instant redirects for wrong-role access. Real permission enforcement is on the backend.
+- **State machine over booleans** — Shop approval uses `PENDING → APPROVED/REJECTED → PENDING` (via edit) rather than an `isApproved: boolean`. Extensible to SUSPENDED, DEACTIVATED, etc. without migrations.
+- **CUID over UUID** — opaque, sortable, URL-safe.
+- **Decimal for money** (planned Day 6) — never `Float`.
+- **Zod as validation contract** — Zod schemas are the single source of truth between frontend and backend. Type inference eliminates drift.
+
+---
 
 ## 📜 License
 
