@@ -267,7 +267,6 @@ Documented in [docs/](./docs/) as this grows. Highlights so far:
 - **State machine over booleans** — Shop approval uses `PENDING → APPROVED/REJECTED → PENDING` (via edit) rather than an `isApproved: boolean`. Extensible to SUSPENDED, DEACTIVATED, etc. without migrations.
 - **CUID over UUID** — opaque, sortable, URL-safe.
 - **Decimal for money** (planned Day 6) — never `Float`.
-- **Zod as validation contract** — Zod schemas are the single source of truth between frontend and backend. Type inference eliminates drift.
 
 ---
 
