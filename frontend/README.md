@@ -251,8 +251,6 @@ kiranawala/
 | 8 | Testing (Vitest + Supertest) | ⏳ Planned |
 | 9 | Performance + security audit | ⏳ Planned |
 | 10 | Docker Compose + CI/CD | ⏳ Planned |
-| 11 | Deployment (Vercel + Render + Neon) | ⏳ Planned |
-| 12 | Documentation + open-source release | ⏳ Planned |
 
 ---
 
