@@ -15,7 +15,7 @@ interface HealthData {
 type HealthState =
   | { kind: 'loading' }
   | { kind: 'ok'; data: HealthData }
-  | { kind: 'failed'; message: string };
+  | { kind: 'error'; message: string };
 
 export function HealthStatus() {
   const [state, setState] = useState<HealthState>({ kind: 'loading' });
