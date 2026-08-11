@@ -147,7 +147,7 @@ function ShopCard({ shop }: { shop: Shop }) {
 
       {shop.status === 'PENDING' && (
         <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
-          We're reviewing your shop. This usually takes 1-2 business days.
+          We're reviewing your shop. This usually takes 1 to 2 business days.
         </div>
       )}
 
