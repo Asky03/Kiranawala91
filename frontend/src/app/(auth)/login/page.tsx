@@ -80,7 +80,7 @@ export default function LoginPage() {
           <div className="flex items-baseline justify-between">
             <Label htmlFor="password">Password</Label>
             {/* Day 11 will wire this up */}
-            <span className="text-xs text-stone-400">Forgot? (coming soon)</span>
+            <span className="text-xs text-stone-400">Forgot? (update soon)</span>
           </div>
           <Input
             id="password"
