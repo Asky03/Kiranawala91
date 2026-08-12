@@ -25,6 +25,7 @@ _A zero-commission alternative to high-commission quick-commerce._
 ```
 
 **What works today:**
+
 - ✅ Landing page with brand identity
 - ✅ Signup + login (customer, shopkeeper)
 - ✅ JWT authentication with httpOnly cookies
@@ -35,6 +36,7 @@ _A zero-commission alternative to high-commission quick-commerce._
 - ✅ Rejected shops can be edited and resubmitted
 
 **What's coming:**
+
 - ⏳ Day 4: Product & inventory management
 - ⏳ Day 4.5: UI polish pass
 - ⏳ Day 5: Customer shop discovery
@@ -74,16 +76,16 @@ Local kirana stores power Indian neighbourhoods but stay invisible online. Exist
 
 ## 🚀 Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Frontend | Next.js 14 (App Router), TypeScript, Tailwind CSS, Zustand |
-| Backend | Node.js 20, Express, TypeScript, Zod |
-| Database | PostgreSQL 16 + Prisma ORM |
-| Auth | JWT (httpOnly cookies) + bcrypt (12 rounds) |
-| Edge auth | `jose` (Next.js Edge runtime JWT verify) |
-| Logging | Pino (structured JSON logs) |
-| Testing | Vitest + Supertest (planned Day 8) |
-| Deployment | Vercel (FE), Render (BE), Neon (DB) — planned Day 11 |
+| Layer      | Technology                                                 |
+| ---------- | ---------------------------------------------------------- |
+| Frontend   | Next.js 14 (App Router), TypeScript, Tailwind CSS, Zustand |
+| Backend    | Node.js 20, Express, TypeScript, Zod                       |
+| Database   | PostgreSQL 16 + Prisma ORM                                 |
+| Auth       | JWT (httpOnly cookies) + bcrypt (12 rounds)                |
+| Edge auth  | `jose` (Next.js Edge runtime JWT verify)                   |
+| Logging    | Pino (structured JSON logs)                                |
+| Testing    | Vitest + Supertest (planned Day 8)                         |
+| Deployment | Vercel (FE), Render (BE), Neon (DB) — planned Day 11       |
 
 ---
 
@@ -152,11 +154,11 @@ pnpm dev:frontend   # → http://localhost:3000
 
 Seeded by `prisma/seed.ts`. **Never use in production.**
 
-| Role | Email | Password | Login URL |
-|------|-------|----------|-----------|
-| Customer | `customer@kiranawala.local` | `Customer@12345` | `/login` |
-| Shopkeeper | `shopkeeper@kiranawala.local` | `Shop@12345` | `/login` |
-| Admin | `admin@kiranawala.local` | `Admin@12345` | `/admin/login` |
+| Role       | Email                         | Password         | Login URL      |
+| ---------- | ----------------------------- | ---------------- | -------------- |
+| Customer   | `customer@kiranawala.local`   | `Customer@12345` | `/login`       |
+| Shopkeeper | `shopkeeper@kiranawala.local` | `Shop@12345`     | `/login`       |
+| Admin      | `admin@kiranawala.local`      | `Admin@12345`    | `/admin/login` |
 
 ---
 
@@ -165,28 +167,31 @@ Seeded by `prisma/seed.ts`. **Never use in production.**
 Base URL: `http://localhost:4000`
 
 ### Health
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/health` | none | Server + DB connectivity check |
+
+| Method | Endpoint      | Auth | Description                    |
+| ------ | ------------- | ---- | ------------------------------ |
+| GET    | `/api/health` | none | Server + DB connectivity check |
 
 ### Auth
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/api/auth/register` | none | Create customer/shopkeeper account |
-| POST | `/api/auth/login` | none | Sign in, sets JWT cookie |
-| POST | `/api/auth/login?as=admin` | none | Admin-only login (rejects non-admins) |
-| POST | `/api/auth/logout` | none | Clear JWT cookie |
-| GET | `/api/auth/me` | any | Get current user |
+
+| Method | Endpoint                   | Auth | Description                           |
+| ------ | -------------------------- | ---- | ------------------------------------- |
+| POST   | `/api/auth/register`       | none | Create customer/shopkeeper account    |
+| POST   | `/api/auth/login`          | none | Sign in, sets JWT cookie              |
+| POST   | `/api/auth/login?as=admin` | none | Admin-only login (rejects non-admins) |
+| POST   | `/api/auth/logout`         | none | Clear JWT cookie                      |
+| GET    | `/api/auth/me`             | any  | Get current user                      |
 
 ### Shops
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/api/shops/me` | Shopkeeper | Create my shop |
-| GET | `/api/shops/me` | Shopkeeper | Get my shop |
-| PATCH | `/api/shops/me` | Shopkeeper | Edit my shop |
-| GET | `/api/shops/pending` | Admin | List pending approvals |
-| POST | `/api/shops/:id/approve` | Admin | Approve a shop |
-| POST | `/api/shops/:id/reject` | Admin | Reject with a reason |
+
+| Method | Endpoint                 | Auth       | Description            |
+| ------ | ------------------------ | ---------- | ---------------------- |
+| POST   | `/api/shops/me`          | Shopkeeper | Create my shop         |
+| GET    | `/api/shops/me`          | Shopkeeper | Get my shop            |
+| PATCH  | `/api/shops/me`          | Shopkeeper | Edit my shop           |
+| GET    | `/api/shops/pending`     | Admin      | List pending approvals |
+| POST   | `/api/shops/:id/approve` | Admin      | Approve a shop         |
+| POST   | `/api/shops/:id/reject`  | Admin      | Reject with a reason   |
 
 All authenticated endpoints accept either the httpOnly cookie (browser) or `Authorization: Bearer <token>` header (Postman/curl).
 
@@ -237,20 +242,20 @@ kiranawala/
 
 ## 🗺️ Roadmap
 
-| Day | Focus | Status |
-|-----|-------|--------|
-| 0 | Environment setup | ✅ Done |
-| 1 | Foundation — monorepo, health endpoint, landing page | ✅ Done |
-| 2 | Authentication — JWT, role-based routing | ✅ Done |
-| **3** | **Shop module — CRUD + admin approval** | **✅ Done** |
-| 4 | Products & inventory | ⏳ Next |
-| 4.5 | UI polish pass | ⏳ Planned |
-| 5 | Customer shop discovery | ⏳ Planned |
-| 6 | Orders & checkout | ⏳ Planned |
-| 7 | Reviews + admin analytics | ⏳ Planned |
-| 8 | Testing (Vitest + Supertest) | ⏳ Planned |
-| 9 | Performance + security audit | ⏳ Planned |
-| 10 | Docker Compose + CI/CD | ⏳ Planned |
+| Day   | Focus                                                | Status      |
+| ----- | ---------------------------------------------------- | ----------- |
+| 0     | Environment setup                                    | ✅ Done     |
+| 1     | Foundation — monorepo, health endpoint, landing page | ✅ Done     |
+| 2     | Authentication — JWT, role-based routing             | ✅ Done     |
+| **3** | **Shop module — CRUD + admin approval**              | **✅ Done** |
+| 4     | Products & inventory                                 | ⏳ Next     |
+| 4.5   | UI polish pass                                       | ⏳ Planned  |
+| 5     | Customer shop discovery                              | ⏳ Planned  |
+| 6     | Orders & checkout                                    | ⏳ Planned  |
+| 7     | Reviews + admin analytics                            | ⏳ Planned  |
+| 8     | Testing (Vitest + Supertest)                         | ⏳ Planned  |
+| 9     | Performance + security audit                         | ⏳ Planned  |
+| 10    | Docker Compose + CI/CD                               | ⏳ Planned  |
 
 ---
 
@@ -259,7 +264,7 @@ kiranawala/
 Documented in [docs/](./docs/) as this grows. Highlights so far:
 
 - **Feature-based backend modules** (`modules/auth`, `modules/shop`) — each feature owns its schema, service, controller, and routes. Scales with codebase.
-- **`/me` endpoint pattern** — user identity comes from JWT, never from URL params. Right pattern for any self-scoped resource.
+- **`/me` endpoint pattern** — user identity comes from JWT, never from URL params.
 
 ## 📜 License
 
