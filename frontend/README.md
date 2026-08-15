@@ -249,7 +249,6 @@ kiranawala/
 | 2     | Authentication — JWT, role-based routing             | ✅ Done     |
 | **3** | **Shop module — CRUD + admin approval**              | **✅ Done** |
 | 4     | Products & inventory                                 | ⏳ Next     |
-| 4.5   | UI polish pass                                       | ⏳ Planned  |
 | 5     | Customer shop discovery                              | ⏳ Planned  |
 | 6     | Orders & checkout                                    | ⏳ Planned  |
 | 7     | Reviews + admin analytics                            | ⏳ Planned  |
