@@ -262,7 +262,7 @@ kiranawala/
 
 Documented in [docs/](./docs/) as this grows. Highlights so far:
 
-- **Feature-based backend modules** (`modules/auth`, `modules/shop`) — each feature owns its schema, service, controller, and routes. Scales with codebase.
+- **Feature-based backend modules** (`modules/auth`, `modules/shop`) — each feature owns its schema.
 
 ## 📜 License
 
