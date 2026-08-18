@@ -258,12 +258,6 @@ kiranawala/
 
 ---
 
-## 🧠 Design Decisions
-
-Documented in [docs/](./docs/) as this grows. Highlights so far:
-
-- **Feature-based backend modules** (`modules/auth`, `modules/shop`) — each feature owns its schema.
-
 ## 📜 License
 
 MIT — see [LICENSE](./LICENSE)
