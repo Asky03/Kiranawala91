@@ -22,7 +22,7 @@ Under active development. See [PROGRESS.md](./PROGRESS.md) for daily build log.
 
 ## 💡 The Problem
 
-Local Kirana stores power Indian neighbourhoods but stay invisible online. Existing quick-commerce platforms charge 25-30% commission and don't represent these small shops. Kiranawala gives Kirana shopkeepers a direct digital channel with zero commission, full ownership and building of customer relationships.
+
 
 ## 🏗️ Architecture
 
