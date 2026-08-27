@@ -23,6 +23,7 @@ Under active development. See [PROGRESS.md](./PROGRESS.md) for daily build log.
 ## 💡 The Problem
 
 
+
 ## 🏗️ Architecture
 
 ```
@@ -32,7 +33,7 @@ Customer / Shopkeeper / Admin
         ↓ HTTPS + JWT
    Express API (Render)
         ↓ Prisma
-   PostgreSQL (Neon)
+   PostgreSQL 
 ```
 
 ## 🚀 Tech Stack
