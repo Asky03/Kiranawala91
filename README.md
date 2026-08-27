@@ -33,7 +33,7 @@ Customer / Shopkeeper / Admin
         ↓ HTTPS + JWT
    Express API (Render)
         ↓ Prisma
-   PostgreSQL (Neon)
+   PostgreSQL 
 ```
 
 ## 🚀 Tech Stack
