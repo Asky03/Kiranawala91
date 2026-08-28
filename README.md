@@ -20,8 +20,7 @@ _An alternative to high-commission quick-commerce._
 
 Under active development. See [PROGRESS.md](./PROGRESS.md) for daily build log.
 
-## 💡 The Problem
-
+#
 
 
 ## 🏗️ Architecture
