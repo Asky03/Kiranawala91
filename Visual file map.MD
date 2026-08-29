@@ -65,8 +65,8 @@ kiranawala/
     ├── .env.example                               ✏️ APPEND 2 lines (placeholder versions)
     ├── .eslintrc.cjs                              ✅ keep (no change)
     ├── package.json                               ✏️ ADD deps + seed script (via pnpm add commands)
-    ├── README.md                                  ✅ keep (no change)
-    └── tsconfig.json                              ✅ keep (no change)
+    ├── README.md                                  
+    └── tsconfig.json                              
 ```
 
 ---
