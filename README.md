@@ -45,11 +45,13 @@ Customer / Shopkeeper / Admin
 | Testing      | Vitest, Supertest                            |
 | Deployment   | Vercel (FE), Render (BE), Neon (DB)          |
 
+
 ## 👥 Roles
 
 - **Customer** — discover shops, browse products, place pickup/delivery orders
 - **Shopkeeper** — manage shop, products, inventory, incoming orders
 - **Admin** — approve shops, monitor platform activity
+
 
 ## 📋 Prerequisites
 
