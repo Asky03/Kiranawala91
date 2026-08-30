@@ -235,8 +235,6 @@ And as a top-level sibling to `"scripts"`:
 - **✏️ Modify in place:** 7 files (env.ts, app.ts, both .env files, layout.tsx, both package.json files)
 - **✏️ Replace contents:** 2 files (frontend/src/lib/api.ts)
 - **🔴 Delete:** 2 leftover `{...}` folders
-- **✅ Keep as-is:** everything else
-
 ---
 
 ## When you're done copying, run
