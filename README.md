@@ -2,7 +2,7 @@
 
 # 🛒 Kiranawala
 
-**A cloud-based platform connecting local Kirana stores with nearby customers.**
+**A cloud based platform connecting local Kirana stores with nearby customers.**
 
 _An alternative to high-commission quick-commerce._
 
