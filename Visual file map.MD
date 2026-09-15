@@ -232,7 +232,6 @@ And as a top-level sibling to `"scripts"`:
 ## Final count
 
 - **🆕 Create:** 20 files (8 backend + 12 frontend)
-- **✏️ Modify in place:** 7 files (env.ts, app.ts, both .env files)
 - **✏️ Replace contents:** 2 files (frontend/src/lib/api.ts)
 
 ## When you're done copying, run
