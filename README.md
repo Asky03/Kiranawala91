@@ -2,7 +2,7 @@
 
 # 🛒 Kiranawala
 
-**A cloud-based platform connecting local Kirana stores with nearby customers.**
+**A cloud based platform connecting local Kirana stores with nearby customers.**
 
 _An alternative to high-commission quick-commerce._
 
@@ -18,7 +18,7 @@ _An alternative to high-commission quick-commerce._
 
 ## 🚧 Status
 
-Under active development. See [PROGRESS.md](./PROGRESS.md) for daily build log.
+Under active development. See [PROGRESS.md](./PROGRESS.md) for build log.
 
 ## 🏗️ Architecture
 
@@ -43,7 +43,7 @@ Customer / Shopkeeper / Admin
 | Validation   | Zod                                          |
 | Logging      | Pino                                         |
 | Testing      | Vitest, Supertest                            |
-| Deployment   | Vercel (FE), Render (BE), Neon (DB)          |
+| Deployment   | Vercel (FE), Render      |
 
 
 ## 👥 Roles
