@@ -43,7 +43,7 @@ Customer / Shopkeeper / Admin
 | Validation   | Zod                                          |
 | Logging      | Pino                                         |
 | Testing      | Vitest, Supertest                            |
-| Deployment   | Vercel (FE), Render (BE), Neon (DB)          |
+| Deployment   | Vercel (FE), Render      |
 
 
 ## 👥 Roles
