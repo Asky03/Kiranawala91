@@ -18,7 +18,7 @@ _An alternative to high-commission quick-commerce._
 
 ## 🚧 Status
 
-Under active development. See [PROGRESS.md](./PROGRESS.md) for build log.
+Under active dev. See [PROGRESS.md](./PROGRESS.md) for build log.
 
 ## 🏗️ Architecture
 
