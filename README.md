@@ -29,22 +29,21 @@ Customer / Shopkeeper / Admin
         ↓ HTTPS + JWT
    Express API (Render)
         ↓ Prisma
-   PostgreSQL 
+   PostgreSQL
 ```
 
 ## 🚀 Tech Stack
 
-| Layer        | Technology                                   |
-| ------------ | -------------------------------------------- |
-| Frontend     | Next.js 14, TypeScript, Tailwind, shadcn/ui  |
-| Backend      | Node.js, Express.js, TypeScript              |
-| Database     | PostgreSQL 16 + Prisma ORM                   |
-| Auth         | JWT + bcrypt, role-based access control      |
-| Validation   | Zod                                          |
-| Logging      | Pino                                         |
-| Testing      | Vitest, Supertest                            |
-| Deployment   | Vercel (FE), Render      |
-
+| Layer      | Technology                                  |
+| ---------- | ------------------------------------------- |
+| Frontend   | Next.js 14, TypeScript, Tailwind, shadcn/ui |
+| Backend    | Node.js, Express.js, TypeScript             |
+| Database   | PostgreSQL 16 + Prisma ORM                  |
+| Auth       | JWT + bcrypt, role-based access control     |
+| Validation | Zod                                         |
+| Logging    | Pino                                        |
+| Testing    | Vitest, Supertest                           |
+| Deployment | Vercel (FE), Render                         |
 
 ## 👥 Roles
 
@@ -52,15 +51,12 @@ Customer / Shopkeeper / Admin
 - **Shopkeeper** — manage shop, products, inventory, incoming orders
 - **Admin** — approve shops, monitor platform activity
 
-
 ## 📋 Prerequisites
 
 - Node.js v20+
 - pnpm v9+
 - PostgreSQL 16+
 - Git
-
-
 
 ---
 
@@ -77,7 +73,7 @@ pnpm install
 # Setup env files
 cp backend/.env.example backend/.env
 cp frontend/.env.local.example frontend/.env.local
-# Edit backend/.env with your DATABASE_URL
+# Edit backend/.env with your DATABASE_URL (simplified)
 
 # Run migrations
 pnpm --filter backend prisma:migrate
@@ -96,4 +92,3 @@ kiranawala/
 ├── docs/         # Architecture, API, DB docs
 └── .github/      # CI/CD workflows
 ```
-
