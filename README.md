@@ -56,7 +56,6 @@ Customer / Shopkeeper / Admin
 - Node.js v20+
 - pnpm v9+
 - PostgreSQL 16+
-- Git
 
 ---
 
